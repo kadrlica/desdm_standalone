@@ -5,9 +5,6 @@ DESDM standalone package
 __author__ = "Alex Drlica-Wagner"
 __email__ = "kadrlica@fnal.gov"
 
-try:
-    from .version import __version__
-except ImportError:
-    from .get_version import get_version
-    __version__ = get_version()
-
+from ._version import get_versions
+__version__ = get_versions()['version']
+del get_versions
