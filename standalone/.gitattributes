@@ -1,0 +1,2 @@
+# Export the versioning string when archiving
+get_version.py export-subst

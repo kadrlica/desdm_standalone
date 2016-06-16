@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+"""
+Download a DECam exposure.
+"""
+__author__ = "Alex Drlica-Wagner"
+
+from standalone import noao
+
+if __name__ == "__main__":
+    import argparse
+    description = __doc__
+    parser = argparse.ArgumentParser(description=description)
+    parser.add_argument('expnum', type=int, help='DECam exposure number')
+    parser.add_argument('outfile', nargs='?', help='Output file')
+    args = parser.parse_args()
+
+    try:
+
+
+    try: 
+        noao.download_exposure(args.expnum,args.outfile)
+    
