@@ -476,6 +476,8 @@ def read_geometry(infile, outfile, CCD):
     
 if __name__ == '__main__':
 
+    ### Move this to a tests directory
+
     # cmdtest = 'DECam_crosstalk DECam_00229650.fits.fz D00229650_g_%02d_r0000p01_xtalk.fits -crosstalk DECam_20130606.xtalk -ccdlist 3,4 -overscanfunction 0 -overscansample 1 -overscantrim 5 -photflag 1 -verbose 0 -replace DES_header_update.20151120'
     # app = crosstalk()
     # app.parse_args(cmdtest.split()[1:])

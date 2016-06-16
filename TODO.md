@@ -1,4 +1,4 @@
 
-* Switch to yaml config.
-* Standardize naming
-* Make desdmlib a real library (remove argparser and config)
+* Switch to yaml config?
+* Standardize naming(?)
+* Eliminate 'nite' and 'filter' from exposure list.

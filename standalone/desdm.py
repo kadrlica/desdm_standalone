@@ -33,7 +33,7 @@ def copy_from_dcache(config,force=False,verbose=False):
         config = SafeConfigParser()
         config.read(configfile)
 
-    # Dcache Directories
+    # Data and calibration directories
     datadir = config.get('dcache','datdir')
     calbdir = config.get('dcache','caldir')
     confdir = config.get('dcache','cfgdir')

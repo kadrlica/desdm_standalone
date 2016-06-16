@@ -9,6 +9,8 @@ The list file should be a csv file containing:
 20121124,155249,i
 ...
 
+In the future we'd like to eliminate the 'nite' and 'filter' fields
+and replace them with a call to the DB.
 """
 
 import numpy as np
@@ -23,8 +25,9 @@ except ImportError:
     from configparser import ConfigParser
 from StringIO import StringIO
 
-import dcache
+import standalone.dcache as dcache
 
+# Template for the grid run script
 script = """#!/usr/bin/env bash
 OLDHOME=$HOME
 export HOME=$PWD
@@ -63,6 +66,7 @@ ifdh cp -D {logfile} {outdir}
 export HOME=$OLDHOME
 """
 
+# Template for the jobsub script
 submit = """#!/usr/bin/env bash
 
 # Use the system python
@@ -77,11 +81,11 @@ jobsub_submit \\
 """
 
 import argparse
-parser = argparse.ArgumentParser(description=__doc__)
+parser = argparse.ArgumentParser(description="Run an input list of exposures.")
 parser.add_argument('inlist',metavar='inlist.csv',
                     help="Input csv file containing: nite,expnum,filter")
 parser.add_argument('-c','--config', default = None,
-                    help = "Input onfigureation file")
+                    help = "Input config file")
 parser.add_argument('--dryrun',action='store_true',
                     help="Do not run the job")
 parser.add_argument('-r','--reqnum',default=0, type=int,
@@ -106,7 +110,8 @@ params = dict(reqnum=args.reqnum,attnum=args.attnum)
 
 config = ConfigParser()
 if args.config is None:
-    codedir = os.path.dirname(os.path.abspath(__file__))
+    # This is a bit kludgy
+    codedir = os.path.dirname(os.path.abspath(dcache.__file__))
     configfile = os.path.join(codedir,'config','default.cfg')
 else:
     configfile = args.config
