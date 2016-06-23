@@ -4,13 +4,7 @@ import os
 try: from setuptools import setup
 except ImportError: from distutils.core import setup
 
-
 import versioneer
-versioneer.VCS = 'git'
-versioneer.versionfile_source = 'standalone/_version.py'
-versioneer.versionfile_build = 'standalone/_version.py'
-versioneer.tag_prefix = 'v' # tags are like 1.2.0
-versioneer.parentdir_prefix = 'myproject-' # dirname like 'myproject-1.
 
 NAME = 'desdm_standalone'
 HERE = os.path.abspath(os.path.dirname(__file__))
